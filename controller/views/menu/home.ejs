@@ -1,0 +1,154 @@
+<!-- Page Heading -->
+<div class="row">
+    <div class="col-lg-12">
+        <h3 class="page-header">
+            MCA LIBRARY
+        </h3>
+        <div class="row">
+            <div class="col-lg-3 col-md-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-book fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                          <div class='huge'><%= books %></div>
+                                <div>Books</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="/Books">
+                        <div class="panel-footer">
+                            <span class="pull-left">View Books</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="panel panel-green">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-graduation-cap fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                             <div class='huge'><%= students %></div>
+                              <div>Students</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="/Students">
+                        <div class="panel-footer">
+                            <span class="pull-left">View Details</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="panel panel-yellow">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-folder fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                            <div class='huge'><%= returns %></div>
+                                <div> Returns </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="/Return">
+                        <div class="panel-footer">
+                            <span class="pull-left">View Details</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="panel panel-red">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-list fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                 <div>Issue Book</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="/IssueBook">
+                        <div class="panel-footer">
+                            <span class="pull-left">Issue</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- issue book -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h3 class="page-header">
+                    Search Book
+                </h3>
+                <%- include ('../partials/messages') %> 
+                <div class="row justify-content-center">
+                    <div class="col-12 col-sm-6">
+                        <div id="isserror"></div>
+                        <form class="form-inline my-2 my-lg-0" action="/Home" method="POST" id="search-bk">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Enter the Book " aria-label="Search" name="searchBK" id="serBk">
+                            <button class="btn btn-primary my-2 my-sm-0" type="button" onclick="bookSearch()"> Search </button> 
+                          </form> 
+                    </div>
+                </div><br>
+                <% if(typeof sBK != 'undefined'){ %>
+                <div style="overflow-x:auto;">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>ISBN</th>
+                                <th>Title</th>
+                                <th>Author</th>
+                                <th>Edition</th>
+                                <td>Availability</td>
+                                 
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <% sBK.forEach(function(bk){ %> 
+                           <tr></tr>
+                               <td><%=  bk.bookId  %></td>
+                               <td><%=  bk.isbn  %></td>
+                               <td><%=  bk.title  %></td>
+                               <td><%=  bk.author  %></td>
+                               <td><%=  bk.edition  %></td>
+                               <% if( bk.stdAdId == 0){ %>
+                                <td><center><i class="fa fa-check fa-lg avail"></i></center></td>
+                                <% }else{ %>
+                                    <td><center><i class="fa fa-times fa-lg not-avail"></i></center></td>
+                                    <% } %>
+                           </tr>
+                        <% }); %>
+                           
+                        </tbody>
+                    </table>
+        
+                </div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.row -->
+
+<!-- 
+ -->

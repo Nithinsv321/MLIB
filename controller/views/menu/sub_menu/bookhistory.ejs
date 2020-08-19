@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="col-lg-12 ">
+        <h2 class="page-header">
+        Book History
+        </h2>
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-6">
+                <div id="histerror"></div>
+                <form class="form-inline my-2 my-lg-0" action="/Bookhistory" method="POST" id="histBkID">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Enter the Book id " aria-label="Search" name="hisBkId" id="hisbk">
+                    <button class="btn btn-primary my-2 my-sm-0" type="button" onclick="bookhistory()"> Search </button> 
+                  </form> 
+            </div>
+        </div>
+        <% if(typeof bkhistmsg != 'undefined'){ %> 
+            <div class="alert alert-danger" role="alert">
+              <%= bkhistmsg %>
+            </div>  
+          <% } %>
+        <% if(typeof bkhists != 'undefined'){ %> 
+            <div style="overflow-x:auto;">
+                <h4 class="page-header">
+                    Book
+                    </h4>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Book ID</th>
+                            <th>Student ID</th>
+                            <th>Batch</th>
+                            <th>Issued Date</th>
+                            <th>Returned Date</th>
+                        </tr>
+                    </thead>
+                    <tbody> 
+                        <% bkhists.forEach(function(bkhist){ %>
+                        <tr> 
+                            <td><%=  bkhist.bookID   %></td>
+                            <td><%=  bkhist.stdID  %></td>
+                            <td><%=  bkhist.batch.start %> - <%= bkhist.batch.end%></td>
+                            <td><%=  bkhist.issueDate   %></td>
+                            <td><%=  bkhist.returnDate   %></td>
+                        </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+        <% } %>
+    </div>
+</div>

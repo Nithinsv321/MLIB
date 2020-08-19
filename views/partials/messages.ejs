@@ -1,0 +1,97 @@
+<% if(typeof errors != 'undefined'){ %> 
+  <% errors.forEach(function(error) { %>
+  <div class="alert alert-danger" role="alert">
+      <%= error.msg %>
+    </div>  
+    <% }); %>
+    <% } %> 
+
+<% if(typeof sucess != 'undefined'){ %> 
+  <% sucess.forEach(function(value) { %>
+    <div class="alert alert-success" role="alert">
+      <%= value.msg %>
+    </div>  
+  <% }); %>
+<% } %>
+
+
+
+<% if(typeof vbErrors != 'undefined'){ %>
+   <% vbErrors.forEach(function(vberror) { %>
+  <div class="alert alert-danger" role="alert">
+      <%= vberror.msg %>
+    </div>  
+    <% }); %>
+    <% } %> 
+
+
+<% if(typeof vbSucess != 'undefined'){ %> 
+  <% vbSucess.forEach(function(vbSuces) { %>
+  <div class="alert alert-success" role="alert">
+    <%= vbSuces.msg %>
+  </div>  
+<% }); %>
+<% } %> 
+
+
+<% if(typeof edbSuccess != 'undefined'){ %> 
+  <% edbSuccess.forEach(function(edbSucces) { %>
+  <div class="alert alert-success" role="alert">
+    <%= edbSucces.msg %>
+  </div>  
+<% }); %>
+<% } %> 
+
+
+<% if(typeof edbErrors != 'undefined'){ %> 
+  <% edbErrors.forEach(function(edberror) { %>
+  <div class="alert alert-danger" role="alert">
+      <%= edberror.msg %>
+    </div>  
+    <% }); %>
+    <% } %> 
+  
+    <% if(typeof berrors != 'undefined'){ %> 
+      <% berrors.forEach(function(berror) { %>
+      <div class="alert alert-danger" role="alert">
+          <%= berror.msg %>
+        </div>  
+        <% }); %>
+      <% } %>
+<% if(typeof aberrors != 'undefined'){ %> 
+  <% aberrors.forEach(function(aberror) { %>
+    <div class="alert alert-danger" role="alert">
+      <%= aberror.msg %>
+    </div>  
+  <% }); %>
+<% } %>
+<% if(typeof absuccess != 'undefined'){ %> 
+  <% absuccess.forEach(function(absucces) { %>
+    <div class="alert alert-success" role="alert">
+      <%= absucces.msg %>
+    </div>  
+  <% }); %>
+<% } %>
+ 
+
+
+<% if(typeof searerrors != 'undefined'){ %> 
+  <% searerrors.forEach(function(searerror) { %>
+    <div class="alert alert-danger" role="alert">
+      <%= searerror.msg %>
+    </div>  
+  <% }); %>
+<% } %> 
+
+
+
+
+
+
+<% if(typeof retisserror != 'undefined'){ %> 
+  <div class="alert alert-danger" role="alert">
+    <%= retisserror %>
+  </div>  
+<% } %>
+
+

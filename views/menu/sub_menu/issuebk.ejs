@@ -1,0 +1,101 @@
+<div class="row">
+    <div class="col-lg-12 ">
+        <h2 class="page-header">
+        Issue Book
+        </h2>
+        <% if(typeof iss_errors != 'undefined'){ %> 
+            <% iss_errors.forEach(function(iss_error) { %>
+              <div class="alert alert-danger" role="alert">
+                <%= iss_error.msg %>
+              </div>  
+            <% }); %>
+          <% } %> 
+          <% if(typeof issmsg != 'undefined'){ %> 
+            <div class="alert alert-success" role="alert">
+              <%= issmsg %>
+            </div>  
+        <% } %> 
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-6">
+                <div id="issueerror"></div>
+                <form class="form-inline my-2 my-lg-0" action="/IssueBook" method="POST" id="issueBkID">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Enter the Book " aria-label="Search" name="issueID" id="issbk">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Student Admission No " aria-label="Search" name="issueStdID" id="issto">
+                    <button class="btn btn-primary my-2 my-sm-0" type="button" onclick="issueBook()"> Search </button> 
+                  </form> 
+            </div>
+        </div>
+        <% if(typeof isssBK != 'undefined' || typeof issStd != 'undefined'){ %> 
+        <form class="form-inline my-2 my-lg-0" action="/Issued" method="POST" id="final-issue"> 
+            <div style="overflow-x:auto;">
+                <h4 class="page-header">
+                    Book
+                    </h4>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>ISBN</th>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Edition</th>
+                            <td>Availability</td>
+                            
+                        </tr>
+                    </thead>
+                    <tbody> 
+                    <tr></tr>
+                        <td><%=  isssBK.bookId  %></td>
+                        <td><%=  isssBK.isbn  %></td>
+                        <td><%=  isssBK.title  %></td>
+                        <td><%=  isssBK.author  %></td>
+                        <td><%=  isssBK.edition  %></td>
+                        <% if(!isssBK.stdAdId){ %>
+                            <td><center><i class="fa fa-check fa-lg avail"></i></center></td>
+                            <% }else{ %>
+                                <td><center><i class="fa fa-times fa-lg not-avail"></i></center></td>
+                            <% } %>
+                    </tr>
+                    </tbody>
+                </table>
+                <h4 class="page-header">
+                    Student
+                    </h4>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Admission No</th>
+                            <th>Name</th>
+                            <th>Gender</th>
+                            <th>Book Taken</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><%=  issStd.admNo  %></td>
+                            <td><%=  issStd.name  %></td>
+                            <td><%=  issStd.gender  %></td>
+                            <td><%=  issStd.takenBkId  %></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-12 col-sm-6">
+                <div id="finalerror"></div>
+                    <input type="hidden" name="issstdId" id="fiissad" value="<%=  issStd.admNo  %>">
+                    <input type="hidden" name="issbkId" id="fiissbk" value="<%=  isssBK.bookId  %>">
+                    <button class="btn btn-primary my-2 my-sm-0" type="button" onclick="issued()"> Issue </button> 
+                </div>    
+                
+            </div>
+
+        </form>
+
+        <br>
+
+
+        <% } %>
+    </div>
+</div>
+<!-- /.row -->

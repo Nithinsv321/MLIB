@@ -1,0 +1,89 @@
+<div class="row">
+    <div class="col-lg-12 ">
+        <h2 class="page-header">
+        Return Book
+        </h2>
+        <% if(typeof retisserror != 'undefined'){ %> 
+            <div class="alert alert-danger" role="alert">
+              <%= retisserror %>
+            </div>  
+          <% } %>
+          <% if(typeof retisssucess != 'undefined'){ %> 
+            <div class="alert alert-success" role="alert">
+              <%= retisssucess %>
+            </div>  
+        <% } %> 
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-6">
+                <div id="reterror"></div>
+                <form class="form-inline my-2 my-lg-0" action="/Returns" method="POST" id="retrBkID">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Enter the Book " aria-label="Search" name="retBkId" id="retbk">
+                    <button class="btn btn-primary my-2 my-sm-0" type="button" onclick="returncheckBook()"> Search </button> 
+                  </form> 
+            </div>
+        </div>
+        <% if(typeof issretBK != 'undefined' || typeof issretStd != 'undefined'){ %> 
+        <form class="form-inline my-2 my-lg-0" action="/Returned" method="POST" id="final-return"> 
+            <div style="overflow-x:auto;">
+                <h4 class="page-header">
+                    Book
+                    </h4>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>ISBN</th>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Edition</th>
+                        </tr>
+                    </thead>
+                    <tbody> 
+                        <tr>
+                            <td><%=  issretBK.bookId  %></td>
+                            <td><%=  issretBK.isbn  %></td>
+                            <td><%=  issretBK.title  %></td>
+                            <td><%=  issretBK.author  %></td>
+                            <td><%=  issretBK.edition  %></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h4 class="page-header">
+                    Student
+                    </h4>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Admission No</th>
+                            <th>Name</th>
+                            <th>Gender</th>
+                            <th>Book Taken</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><%=  issretStd.admNo  %></td>
+                            <td><%=  issretStd.name  %></td>
+                            <td><%=  issretStd.gender  %></td>
+                            <td><%=  issretStd.takenBkId  %></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-12 col-sm-6">
+                <div id="finalerror"></div> 
+                    <input type="hidden" name="firetId" id="firet" value="<%=  issretiss._id %>">
+                    <button class="btn btn-primary my-2 my-sm-0" type="button" onclick="bookReturn()"> Return </button> 
+                </div>    
+                
+            </div>
+
+        </form>
+
+        <br>
+
+
+        <% } %>
+    </div>
+</div>
