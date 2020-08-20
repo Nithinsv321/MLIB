@@ -437,7 +437,7 @@ router.post('/Profile',logauth,async(req,res)=>{
         const user =await User.findById({_id:req.session.current});
         const updates = Object.keys(req.body);
         const {name,email,password,updatePassword,updateConfirmPassword}= req.body;
-         const upuser =await User.findOne({email:email,user:req.session.current});
+         const upuser =await User.findOne({email:email});
         if(upuser){
             const match = await bcrypt.compare(password,user.password);
             if(!match) {
