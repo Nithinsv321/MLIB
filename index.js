@@ -6,7 +6,6 @@ dotenv.config();
 const mainRouter=require('./Router/router');
 const bookRouter=require('./Router/bookRouter');
 const studentRouter = require('./Router/studentsRouter');
-const resourceRouter = require('./Router/resourseRouter');
 require('./DB/db');
 
 
@@ -34,7 +33,6 @@ app.use(bodyParser.urlencoded({ extended: true, limit: "5mb" }));
 app.use('/',mainRouter);
 app.use('/Book',bookRouter);
 app.use('/Student',studentRouter);
-app.use('/Resource',resourceRouter);
 
 const port =process.env.PORT || 5000;
 
