@@ -26,19 +26,73 @@
     <div class="container-fluid">
         <h1 class="display-4 qt">"TODAY A READER, TOMORROW A LEADER"</h1>
       </div>
-        <div class="container-fluid">
+        <div class="container-fluid in">
             <div class="row justify-content-center">
                 <div class="col-12 col-sm-6 ">
                     <form action="/" method="POST" class="form-container">
                         <div class="input-group">
-                            <input type="text" name="" id="" placeholder="What you are looking for ?" class="form-control">
+                            <input type="text" name="search" placeholder="What you are looking for ?" class="form-control">
                             <button type="submit" class="btn btn-primary"> Search </button>
                         </div>
                     </form>
-                      
+            </div>
+        </div><br><br>
+        <% if(typeof msg != 'undefined'){ %>
+        <div class="container-fluid in">
+            <div class="row justify-content-center">
+                <div class="col-12 col-sm-6 ">
+                    <div class="alert alert-danger">
+                        <%= msg %>
+                    </div>
                 </div>
             </div>
         </div>
+        <% } %>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-lg-12"> 
+                         <br>
+                        <% if(typeof sBK != 'undefined'){ %>
+                        <div style="overflow-x:auto;">
+                            <table class="table table-bordered tb">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>ISBN</th>
+                                        <th>Title</th>
+                                        <th>Author</th>
+                                        <th>Edition</th>
+                                        <td>Availability</td>
+                                         
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <% sBK.forEach(function(bk){ %> 
+                                   <tr></tr>
+                                       <td><%=  bk.bookId  %></td>
+                                       <td><%=  bk.isbn  %></td>
+                                       <td><%=  bk.title  %></td>
+                                       <td><%=  bk.author  %></td>
+                                       <td><%=  bk.edition  %></td>
+                                       <% if( bk.stdAdId == 0){ %>
+                                        <td><center><i class="fa fa-check fa-lg avail"></i></center></td>
+                                        <% }else{ %>
+                                            <td><center><i class="fa fa-times fa-lg not-avail"></i></center></td>
+                                            <% } %>
+                                   </tr>
+                                <% }); %>
+                                   
+                                </tbody>
+                            </table>
+                
+                        </div>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

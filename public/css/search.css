@@ -10,3 +10,17 @@ body {
     font-weight: bold;
     text-align: center;
  }
+
+ .in{
+     margin-bottom: 30px;
+ }
+ .tb{
+    background-color: white;
+ }
+
+ .not-avail {
+    color: red;
+}
+.avail {
+    color: green;
+}

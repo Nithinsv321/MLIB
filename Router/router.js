@@ -9,6 +9,7 @@ const Batch = require('../models/batch');
 const Book = require('../models/books');
 const Issued = require('../models/issued');
 const student = require('../models/student');
+const { find } = require('../models/user');
  
 //All get requests
 router.get('/',(req,res)=>{
@@ -213,7 +214,7 @@ router.get('/Logout',logauth,(req,res)=>{
         }
 
         res.clearCookie(process.env.SESSION_NAME);
-        res.redirect('/Login');
+        res.redirect('/');
     })
 });
 
@@ -465,6 +466,30 @@ router.post('/Profile',logauth,async(req,res)=>{
     }
 });
 
+
+//searchpublic
+router.post('/',async(req,res)=>{
+    try{
+        const search = req.body.search.toLowerCase();
+        if(!search){
+            return res.redirect('/');
+        }
+        const books = await Book.find({});
+        let sBK=[];
+        books.forEach(function(book){
+            let title = book.title.toLowerCase();
+            if( title.includes(search)){
+               sBK.push(book);
+            }
+        });
+        if(sBK.length == 0){
+            return res.render('search',{msg:'No Book'});
+        }
+        res.render('search',{sBK:sBK});
+    }catch(error){
+        res.status(500).send();
+    }
+});
  
 
  
