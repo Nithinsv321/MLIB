@@ -10,11 +10,6 @@
     <meta name="author" content="">
 
     <title>MLIB</title>
-
- 
-
-   
-
     <!-- Custom Fonts -->
     <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -25,51 +20,25 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
  <!-- Custom CSS -->
- <link href="/css/login.css" rel="stylesheet">  
+ <link href="/css/search.css" rel="stylesheet">  
 </head>
 <body>
-    
+    <div class="container-fluid">
+        <h1 class="display-4 qt">"TODAY A READER, TOMORROW A LEADER"</h1>
+      </div>
         <div class="container-fluid">
             <div class="row justify-content-center">
-                <div class="col-12 col-sm-6 col-md-3">
-                   
-                  
-                    <form class="form-container" method="POST" action="/login" id="login-user"> 
-                      <div class="form-group">
-                         <h3><center> Login </center></h3>
-                      </div>
-                        <div class="form-group">
-                          <label for="email">Email address</label>
-                          <input type="email" class="form-control"   placeholder="Enter email" name="email" id="uem">
+                <div class="col-12 col-sm-6 ">
+                    <form action="/" method="POST" class="form-container">
+                        <div class="input-group">
+                            <input type="text" name="" id="" placeholder="What you are looking for ?" class="form-control">
+                            <button type="submit" class="btn btn-primary"> Search </button>
                         </div>
-                        <div class="form-group">
-                          <label for="password">Password</label>
-                          <input type="password" class="form-control"  placeholder="Password" name="password" id="ups">
-                        </div>
-                        <div class="form-group">
-                            <label for="signup">Don't have an account</label>
-                            <span><a href="/Register"> signup </a></span>
-                          </div>
-                          <div id="logerror"></div>
-                          <% if(typeof logerrors != 'undefined'){ %> 
-                            <% logerrors.forEach(function(logerror) { %>
-                            <div class="alert alert-danger" role="alert">
-                                <%= logerror.msg %>
-                              </div>  
-                              <% }); %>
-                              <% } %> 
-                        <button type="submit" class="btn btn-primary btn-block" >Login</button>
-                      </form>
+                    </form>
                       
                 </div>
             </div>
         </div>
-     
-     
-
-
-
-
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

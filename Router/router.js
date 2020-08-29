@@ -11,8 +11,12 @@ const Issued = require('../models/issued');
 const student = require('../models/student');
  
 //All get requests
-router.get('/',auth,(req,res)=>{
-    res.redirect('/Login')
+router.get('/',(req,res)=>{
+    try {
+        res.render('search');
+    } catch (error) {
+        res.status(500).send();
+    }
 });
 //login register
 router.get('/Login',auth,(req,res)=>{
