@@ -9,7 +9,7 @@ router.get('/ViewBooks',logauth, async(req,res)=>{
         const books = await Book.find({user:req.session.current});
         //  books.forEach(function(book){
         //      console.log( book.stdAdId)
-        //  })
+        //  });
         res.render('index',{page:'sub_menu/viewBooks',books:books})
     } catch (error) {
         return res.status(500);
@@ -38,7 +38,7 @@ router.post('/AddBook',logauth,async(req,res)=>{
         const {bookId,isbn,title,author,edition,status} = req.body; 
         let errors =[];
         let sucess =[];
-        const book = await Book.findOne({bookId:bookId,user:req.session.current});
+        const book = await Book.findOne({bookId:bookId,user:req.session.current});//select * from book where book_name = 
         if(book){
             errors.push({msg:'Book Id Alredy Exist'});
         }

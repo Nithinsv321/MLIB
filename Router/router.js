@@ -9,7 +9,6 @@ const Batch = require('../models/batch');
 const Book = require('../models/books');
 const Issued = require('../models/issued');
 const student = require('../models/student');
-const { find } = require('../models/user');
  
 //All get requests
 router.get('/',(req,res)=>{
@@ -212,7 +211,6 @@ router.get('/Logout',logauth,(req,res)=>{
         if(err){
             return res.redirect('/Home');
         }
-
         res.clearCookie(process.env.SESSION_NAME);
         res.redirect('/');
     })
@@ -221,18 +219,10 @@ router.get('/Logout',logauth,(req,res)=>{
 
 
 /// book search routers
-router.post('/Home',logauth,async(req,res)=>{
+router.post('/search',logauth,async(req,res)=>{
     try {
         const books = await Book.find({user:req.session.current});
-        const students =await Student.find({user:req.session.current});
-        const returns = await Issued.find({user:req.session.current});
         const searchBK = req.body.searchBK.toLowerCase();
-        let ret = [];
-        returns.forEach(function(retur){
-            if(!retur.returnDate){
-                ret.push({retur});
-            }
-        });
         let sBK=[];
         books.forEach(function(book){
             let title = book.title.toLowerCase();
@@ -245,9 +235,9 @@ router.post('/Home',logauth,async(req,res)=>{
             searerrors.push({msg:'No Book '});
         }
         if(searerrors.length > 0){
-            res.render('index',{page:'home',searerrors,books:books.length,students:students.length,returns:ret.length})
+            res.send( { searerrors:searerrors });
         }else{
-            res.render('index',{page:'home',books:books.length,students:students.length,sBK,returns:ret.length})
+            res.send( { sBK:sBK });
         }
     } catch (error) {
         console.log(error);

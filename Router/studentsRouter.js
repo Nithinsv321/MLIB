@@ -142,7 +142,7 @@ router.post('/AddStudent',logauth,async(req,res)=>{
 });
 
 
-//stds select
+//ajax viewStd
 router.post('/students',logauth,async(req,res)=>{
     try {
         const batch = req.body.batch;
@@ -157,9 +157,9 @@ router.post('/students',logauth,async(req,res)=>{
            
         }
         if(vserrors.length >0){
-            res.render('index',{page:'sub_menu/viewStds',batchs:batchs,vserrors})
+            res.send({ vserrors:vserrors })
         }else{
-            res.render('index',{page:'sub_menu/viewStds',batchs:batchs,stds:stds,selbatch:selbatch})
+            res.send({ stds:stds })
             
         }
     } catch (error) {
